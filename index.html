@@ -82,19 +82,7 @@ section p {
 .bg-slate-100 {
   background-color: rgba(255,255,255,0.08) !important;
   border-color: rgba(255,255,255,0.18) !important;
-}
-
-.bg-white *,
-.bg-stone-100 *,
-.bg-slate-100 * {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-.text-kke-blue,
-.kke-blue {
-  color: #38bdf8 !important;
-}<style>
+<style>
     body {
       font-family: 'Inter', sans-serif;
       background: radial-gradient(circle at 50% 0%, #0b1a2b 0%, #020617 60%);
@@ -149,7 +137,39 @@ section p {
   border-color: #005ea8;
 }
 
-  </style>
+  /* FINAL WHITE-TEXT OVERRIDE — paste immediately before </style> */
+html body,
+html body *,
+html body *::before,
+html body *::after,
+html body *::placeholder {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  --tw-text-opacity: 1 !important;
+}
+
+html body [class*="opacity-"],
+html body [class*="text-opacity-"],
+html body [style*="opacity:"],
+html body [style*="--tw-text-opacity"] {
+  opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+html body svg text,
+html body svg tspan,
+html body svg textPath {
+  fill: #fff !important;
+  fill-opacity: 1 !important;
+  stroke: none !important;
+  opacity: 1 !important;
+}
+
+html body [class*="mix-blend-"],
+html body [style*="mix-blend-mode"] {
+  mix-blend-mode: normal !important;
+}
+</style>
 </head>
 <body class="antialiased selection:bg-sky-200 selection:text-sky-900"><header class="bg-slate-950 text-white py-16 px-6 border-b-8 border-kke-blue shadow-xl">
   <div class="max-w-6xl mx-auto">
