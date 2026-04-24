@@ -54,13 +54,41 @@ h3 {
 .bg-stone-100 {
   background-color: rgba(255,255,255,0.06) !important;
   border-color: rgba(255,255,255,0.14) !important;
+/* ===== FINAL VISIBILITY OVERRIDE ===== */
+
+[class*="text-slate-"],
+[class*="text-stone-"],
+[class*="text-gray-"],
+[class*="text-zinc-"] {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.bg-white p,
-.bg-white h3,
-.bg-stone-100 p,
-.bg-stone-100 h3 {
+[class*="opacity-"] {
+  opacity: 1 !important;
+}
+
+.stat-card h3,
+.stat-card p,
+.stat-card div,
+section h2,
+section p {
   color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.bg-white,
+.bg-stone-100,
+.bg-slate-100 {
+  background-color: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+
+.bg-white *,
+.bg-stone-100 *,
+.bg-slate-100 * {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 .text-kke-blue,
