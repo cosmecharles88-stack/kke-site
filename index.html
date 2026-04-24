@@ -6,83 +6,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  /* ===== TEXT VISIBILITY FIX ===== */
-
-body {
-    color: #ffffff !important;
-}
-
-p, span, div {
-    color: #e5e7eb;
-}
-
-/* Force all important text to be bright */
-.text-slate-300,
-.text-slate-400,
-.text-sky-300 {
-    color: #ffffff !important;
-/* ===== DARK BACKGROUND TEXT FIX ===== */
-
-body {
-  background: radial-gradient(circle at 50% 0%, #0b1a2b 0%, #020617 60%) !important;
-  color: #ffffff !important;
-}
-
-[class*="text-slate-900"],
-[class*="text-slate-800"],
-[class*="text-slate-700"],
-[class*="text-slate-600"],
-[class*="text-slate-500"],
-[class*="text-slate-400"],
-[class*="text-slate-300"] {
-  color: #ffffff !important;
-}
-
-p,
-li {
-  color: #e5e7eb !important;
-}
-
-h1,
-h2,
-h3 {
-  color: #ffffff !important;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.65);
-}
-
-.bg-white,
-.bg-stone-100 {
-  background-color: rgba(255,255,255,0.06) !important;
-  border-color: rgba(255,255,255,0.14) !important;
-/* ===== FINAL VISIBILITY OVERRIDE ===== */
-
-[class*="text-slate-"],
-[class*="text-stone-"],
-[class*="text-gray-"],
-[class*="text-zinc-"] {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-[class*="opacity-"] {
-  opacity: 1 !important;
-}
-
-.stat-card h3,
-.stat-card p,
-.stat-card div,
-section h2,
-section p {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-.bg-white,
-.bg-stone-100,
-.bg-slate-100 {
-  background-color: rgba(255,255,255,0.08) !important;
-  border-color: rgba(255,255,255,0.18) !important;
-<style>
+  <style>
     body {
       font-family: 'Inter', sans-serif;
       background: radial-gradient(circle at 50% 0%, #0b1a2b 0%, #020617 60%);
@@ -137,39 +61,7 @@ section p {
   border-color: #005ea8;
 }
 
-  /* FINAL WHITE-TEXT OVERRIDE — paste immediately before </style> */
-html body,
-html body *,
-html body *::before,
-html body *::after,
-html body *::placeholder {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  --tw-text-opacity: 1 !important;
-}
-
-html body [class*="opacity-"],
-html body [class*="text-opacity-"],
-html body [style*="opacity:"],
-html body [style*="--tw-text-opacity"] {
-  opacity: 1 !important;
-  --tw-text-opacity: 1 !important;
-}
-
-html body svg text,
-html body svg tspan,
-html body svg textPath {
-  fill: #fff !important;
-  fill-opacity: 1 !important;
-  stroke: none !important;
-  opacity: 1 !important;
-}
-
-html body [class*="mix-blend-"],
-html body [style*="mix-blend-mode"] {
-  mix-blend-mode: normal !important;
-}
-</style>
+  </style>
 </head>
 <body class="antialiased selection:bg-sky-200 selection:text-sky-900"><header class="bg-slate-950 text-white py-16 px-6 border-b-8 border-kke-blue shadow-xl">
   <div class="max-w-6xl mx-auto">
