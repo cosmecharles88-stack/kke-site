@@ -93,14 +93,14 @@
     </div>
   </div>
 
-  <div class="mt-6 bg-slate-900 border border-white/10 rounded-xl overflow-hidden relative shadow-2xl">
+ <div class="mt-6 bg-slate-900 border border-white/10 rounded-xl overflow-hidden relative shadow-2xl">
     <div class="relative w-full aspect-[21/9] bg-black overflow-hidden flex items-center justify-center">
       
-      <video autoplay muted loop class="absolute w-full h-full object-cover blur-3xl opacity-30 scale-125 pointer-events-none">
+      <video autoplay muted loop playsinline class="absolute w-full h-full object-cover blur-3xl opacity-30 scale-125 pointer-events-none">
         <source src="gx4.mp4" type="video/mp4">
       </video>
 
-      <video controls class="relative h-full z-10" poster="after-sidewalk.jpg">
+      <video autoplay muted loop playsinline controls class="relative h-full z-10 shadow-2xl">
         <source src="gx4.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -114,8 +114,7 @@
       <span class="bg-sky-500/20 text-sky-400 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest hidden sm:block">KKE Tech</span>
     </div>
   </div>
-</section>
-<div class="flex gap-4 pt-8">
+</section> <div class="flex gap-4 pt-8">
   <a href="index.html" 
      class="px-6 py-3 bg-sky-500 text-slate-950 font-bold rounded-lg hover:bg-sky-400 transition-colors">
      Back to Main Page
