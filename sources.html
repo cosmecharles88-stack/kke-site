@@ -73,44 +73,44 @@
   </a>
 </section>
 
-<div class="mt-8 bg-slate-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl relative">
-  <div class="relative w-full aspect-video bg-black overflow-hidden flex items-center justify-center">
-    
-    <video autoplay muted loop class="absolute w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none">
-      <source src="gx4.mp4" type="video/mp4">
-    </video>
+<section class="bg-white/5 border border-white/10 rounded-2xl p-6">
+  <h2 class="text-xl font-bold mb-3 text-sky-300">4. Real Project Evidence</h2>
+  <p class="text-slate-300 text-sm mb-6">Visual documentation of KKE’s precision lifting and final site restoration.</p>
 
-    <video controls class="relative h-full z-10 shadow-[0_0_50px_rgba(0,0,0,0.8)]" poster="after-sidewalk.jpg">
-      <source src="gx4.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div class="p-6 border-t border-white/5 bg-slate-900/50">
-    <div class="flex items-center gap-2 mb-2">
-      <span class="bg-sky-500/20 text-sky-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-widest">Precision Tech</span>
-      <h3 class="font-bold text-xl text-white">Dial-Verified Precision Lifting</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-slate-900 border border-white/10 rounded-xl overflow-hidden">
+      <img src="before-sidewalk.jpg" class="w-full h-64 object-cover object-[center_70%]" alt="Before">
+      <div class="p-3 border-t border-white/5">
+        <h3 class="font-bold text-base text-red-400">Before: Uneven Sidewalk</h3>
+      </div>
     </div>
-    <p class="text-slate-300 text-sm">
-      KKE uses dial indicators to monitor lifts in real-time. This ensures we achieve 
-      <strong>exact grade restoration</strong> within 1/10th of an inch, preventing 
-      over-lifting and ensuring long-term asset preservation.
-    </p>
+
+    <div class="bg-slate-900 border border-white/10 rounded-xl overflow-hidden">
+      <img src="after-sidewalk.jpg" class="w-full h-64 object-cover object-[center_70%]" alt="After">
+      <div class="p-3 border-t border-white/5">
+        <h3 class="font-bold text-base text-emerald-400">After: Leveled Walkway</h3>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="flex gap-4">
-  <a href="index.html"
-     class="px-6 py-3 bg-sky-500 text-slate-950 font-bold rounded-lg">
-     Back to Main Page
-  </a>
+  <div class="mt-6 bg-slate-900 border border-white/10 rounded-xl overflow-hidden relative">
+    <div class="relative w-full aspect-[21/9] bg-black overflow-hidden flex items-center justify-center">
+      
+      <video autoplay muted loop class="absolute w-full h-full object-cover blur-2xl opacity-40 scale-125 pointer-events-none">
+        <source src="gx4.mp4" type="video/mp4">
+      </video>
 
-  <button onclick="window.print()"
-     class="px-6 py-3 border border-sky-400 text-sky-300 font-bold rounded-lg">
-     Print
-  </button>
-</div>
+      <video controls class="relative h-full z-10 shadow-2xl" poster="after-sidewalk.jpg">
+        <source src="gx4.mp4" type="video/mp4">
+      </video>
+    </div>
 
-</main>
-</body>
-</html>
+    <div class="p-4 border-t border-white/5 bg-slate-900/50 flex justify-between items-center">
+      <div>
+        <h3 class="font-bold text-lg text-white">Dial-Verified Precision</h3>
+        <p class="text-slate-400 text-xs mt-1">Real-time monitoring ensures grade restoration within 1/10th".</p>
+      </div>
+      <span class="bg-sky-500/20 text-sky-400 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest hidden sm:block">KKE Tech</span>
+    </div>
+  </div>
+</section>
