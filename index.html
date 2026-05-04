@@ -3,735 +3,393 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KKE Concrete Lifting | Concrete Restoration Across North Texas</title>
-  <meta name="description" content="KKE Concrete Lifting restores sunken and unstable concrete across North Texas using polyurethane lifting solutions that reduce demolition, downtime, and replacement costs." />
-
+  <title>DFW Asset Preservation Strategy | KKE Concrete Lifting</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --kke-blue: #012A6C;
-      --kke-blue-60: rgba(1, 42, 108, 0.28);
-      --kke-blue-20: rgba(1, 42, 108, 0.12);
-      --kke-blue-10: rgba(1, 42, 108, 0.06);
-      --kke-blue-05: rgba(1, 42, 108, 0.035);
-      --kke-blue-dark: #011F4F;
-    }
-
-    html { scroll-behavior: smooth; }
-    section[id] { scroll-margin-top: 100px; }
-
-    body {
+   body {
       font-family: 'Inter', sans-serif;
-      color: #0f172a;
-      background:
-        radial-gradient(circle at top left, var(--kke-blue-10), transparent 34rem),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 38%, rgba(1,42,108,0.08) 100%);
+      /* A subtle 'Cool Slate' background that adds premium depth */
+      background-color: #f1f5f9; 
+      /* Darker charcoal text to ensure 100% legibility against the slate */
+      color: #0f172a; 
+      line-height: 1.6;
     }
 
-    .nav-link { font-weight: 600; color: #334155; }
-    .nav-link:hover { color: var(--kke-blue); }
-
-    .enterprise-shell { position: relative; }
-    .enterprise-shell::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background:
-        linear-gradient(90deg, var(--kke-blue-10), transparent 22%, transparent 78%, var(--kke-blue-05)),
-        linear-gradient(180deg, rgba(255,255,255,0.78), transparent 18rem);
-    }
-
-    .premium-card {
-      border: 1px solid rgba(148,163,184,0.32);
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 18px 45px rgba(15,23,42,0.08);
-      backdrop-filter: blur(10px);
-    }
-    .premium-card:hover { box-shadow: 0 26px 65px rgba(15,23,42,0.13); }
-
-    .blue-panel {
-      background:
-        linear-gradient(135deg, rgba(239,246,255,0.9), rgba(255,255,255,0.94)),
-        radial-gradient(circle at top right, var(--kke-blue-20), transparent 24rem);
-      border-top: 1px solid var(--kke-blue-20);
-      border-bottom: 1px solid var(--kke-blue-20);
-    }
-
-    .section-white { background: #fff; border-top:1px solid rgba(226,232,240,0.8); border-bottom:1px solid rgba(226,232,240,0.8);}    
-    .section-soft-blue { background: linear-gradient(180deg, var(--kke-blue-05), #ffffff); }
-
-    .section-label { color: var(--kke-blue); font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; display:inline-flex; gap:.5rem; align-items:center; }
-    .section-label::before { content:""; width:32px; height:2px; background: var(--kke-blue); }
-
-    .hero-grid {
-      background-image:
-        linear-gradient(rgba(15,23,42,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15,23,42,0.015) 1px, transparent 1px);
-      background-size: 34px 34px; position: relative; overflow: hidden;
-    }
-    .hero-grid::before {
-      content:""; position:absolute; top:-40%; left:-20%; width:140%; height:140%;
-      background: linear-gradient(120deg, transparent 40%, var(--kke-blue-10) 50%, transparent 60%);
-      transform: rotate(8deg);
-      pointer-events: none;
-    }
-
-    .hero-grid > div {
+    .chart-container {
       position: relative;
-      z-index: 1;
-    }
-    
-
-    .btn-primary {
-      background: var(--kke-blue);
-      color:#fff;
-      font-weight:800;
-      border-radius:999px;
-      padding:.9rem 1.35rem;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .btn-primary:hover { background: var(--kke-blue-dark); transform: translateY(-1px); }
-
-    .btn-secondary {
-      color: var(--kke-blue);
-      border:1px solid var(--kke-blue-20);
-      background:#fff;
-      font-weight:800;
-      border-radius:999px;
-      padding:.9rem 1.35rem;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition: border 0.2s ease, background 0.2s ease, transform 0.2s ease;
-    }
-    .btn-secondary:hover { border-color: var(--kke-blue); background: var(--kke-blue-05); transform: translateY(-1px); }
-
-    .serve-photo {
-      min-height: 210px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.32);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-image: var(--before-img);
-      background-color: #f8fafc;
+      width: 100%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 360px;
+      max-height: 420px;
     }
 
-    .serve-photo::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-color: #f8fafc;
-      background-image: var(--after-img);
-      opacity: 0;
-      transform: scale(1);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
-
-    .serve-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(to top, rgba(15,23,42,0.30), rgba(15,23,42,0.04), rgba(255,255,255,0.02));
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-
-    .serve-card:hover .serve-photo::before { opacity: 1; transform: scale(1.08); }
-    .serve-card:hover .serve-photo::after { opacity: 1; }
-
-    .serve-photo-content {
-      position: relative;
-      z-index: 3;
-      min-height: 210px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1rem;
-    }
-
-    .serve-placeholder-text {
-      display: none;
-    }
-
-    .serve-card:hover .serve-placeholder-text { opacity: 0; }
-
-    .serve-overlay-text {
-      display: none;
-    }
-
-    
-
-    .serve-municipal { --before-img: url('city-roadwork-before.jpg'); --after-img: url('city-roadwork-after.jpg'); }
-    .serve-commercial { --before-img: url('warehouse-slab-before.jpg'); --after-img: url('warehouse-slab-after.jpg'); }
-    .serve-contractors { --before-img: url('void-filling-before.jpg'); --after-img: url('void-filling-after.jpg'); }
-    .serve-residential { --before-img: url('driveway-lift-before.jpg'); --after-img: url('driveway-lift-after.jpg'); }
-
-    .project-slideshow {
-      position: relative;
-      overflow: hidden;
-      border-radius: 2rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(255,255,255,0.94);
-      box-shadow: 0 28px 80px rgba(15,23,42,0.14);
-    }
-
-    .project-slide {
-      display: none;
-      grid-template-columns: 1.25fr 0.75fr;
-      min-height: 620px;
-    }
-
-    .project-slide.active { display: grid; }
-
-    .slide-image {
-      min-height: 620px;
-      background:
-        linear-gradient(135deg, var(--kke-blue-10), rgba(15,23,42,0.06)),
-        repeating-linear-gradient(45deg, #f8fafc, #f8fafc 10px, #eef2ff 10px, #eef2ff 20px);
-      border-right: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #475569;
-      font-weight: 800;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .slide-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 3rem;
-    }
-
-    .slide-control {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(148,163,184,0.55);
-      color: #0f172a;
-      font-size: 1.4rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .slide-control:hover {
-      background: white;
-      transform: translateY(-50%) scale(1.05);
-    }
-
-    .slide-prev { left: 1.25rem; }
-    .slide-next { right: 1.25rem; }
-
-    .slide-dots {
-      position: absolute;
-      bottom: 1.25rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.6rem;
-      z-index: 10;
-    }
-
-    .slide-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #cbd5e1;
-      border: none;
-      transition: background 0.2s ease, width 0.2s ease;
-      cursor: pointer;
-    }
-
-    .slide-dot.active {
-      width: 32px;
-      background: var(--kke-blue);
-    }
-
-    @media (max-width: 900px) {
-      .project-slide,
-      .project-slide.active {
-        display: block;
-        min-height: auto;
+    @media (max-width: 768px) {
+      .chart-container {
+        height: 280px;
       }
+    }
+.stat-card {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .stat-card:hover .stat-hidden {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-      .slide-image {
-        min-height: 340px;
-        border-right: 0;
-        border-bottom: 1px solid #e2e8f0;
-      }
+    .stat-hidden {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
 
-      .slide-content { padding: 2rem; }
+    .tab-active {
+      border-bottom: 4px solid #005ea8;
+      color: #005ea8;
+      font-weight: 700;
+    }
+
+    .tab-inactive {
+      border-bottom: 4px solid transparent;
+      color: #64748b;
+    }
+
+    .kke-blue {
+      color: #005ea8;
+    }
+
+    .bg-kke-blue {
+      background-color: #005ea8;
+    }
+
+    .border-kke-blue {
+      border-color: #005ea8;
     }
   </style>
 </head>
+<body class="antialiased selection:bg-sky-200 selection:text-sky-900">
 
-<body>
-  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur shadow-sm">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-      <a href="#home" class="flex items-center">
-        <img src="KKE-Concrete-Lifting-Horizontal.jpg" alt="KKE Concrete Lifting Logo" style="height:60px; width:auto; max-width:300px; object-fit:contain;">
-      </a>
+<header class="bg-slate-950 text-white py-16 px-6 border-b-8 border-kke-blue shadow-xl">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-center py-12 border-b border-slate-800">
+  <img
+    src="kke-final-logo.png"
+    alt="KKE Concrete Lifting | Asset Preservation Logo"
+    class="w-full max-w-5xl h-auto object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.22)]"
+  />
+</div>
+</header>
 
-      <nav class="hidden items-center gap-8 text-sm lg:flex">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#solutions">Solutions</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#applications">Applications</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
+<main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
 
-      <a href="#contact" class="hidden rounded-full bg-[color:var(--kke-blue)] px-5 py-3 text-sm font-extrabold text-white shadow-sm transition hover:bg-[color:var(--kke-blue-dark)] lg:inline-flex">Request Estimate</a>
+  <section id="context" class="space-y-8">
+    <div class="space-y-4">
+      <p class="text-sm font-bold uppercase tracking-widest kke-blue">Situation</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 border-l-4 border-kke-blue pl-4">DFW Properties Are Fighting Expansive Clay, Heavy Traffic, and Deferred Maintenance</h2>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-4xl">North Texas properties face a constant cycle of soil movement, slab settlement, trip hazards, drainage problems, loading dock issues, and tilt-wall movement. For property management and maintenance teams, this turns concrete into a recurring operational and liability problem.</p>
     </div>
-  </header>
-
-  <main id="home" class="enterprise-shell">
-    <section class="hero-grid relative overflow-hidden bg-gradient-to-br from-white via-blue-50/40 to-blue-100/60">
-      <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
-        <div>
-          <div class="mb-6 inline-flex rounded-full border border-[color:var(--kke-blue-20)] bg-[color:var(--kke-blue-05)] px-4 py-2 text-sm font-bold text-[color:var(--kke-blue)]">
-            North Texas Concrete Restoration
-          </div>
-
-          <h1 class="max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            <span class="text-[color:var(--kke-blue)]">Restore</span> concrete without replacement, long closures, or wasted budget.
-          </h1>
-
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            KKE Concrete Lifting helps cities, commercial properties, contractors, and homeowners repair sunken or unsupported concrete using polyurethane lifting solutions built for speed, precision, and minimal disruption.
-          </p>
-
-          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a href="#solutions" class="btn-primary">Choose Your Solution</a>
-            <a href="#projects" class="btn-secondary">View Completed Projects</a>
-          </div>
-        </div>
-
-        <div class="premium-card rounded-3xl p-3 shadow-2xl shadow-slate-200/80">
-          <img src="kkewide.jpg" alt="KKE Concrete Lifting team and trucks at Fort Worth location" class="h-[420px] w-full rounded-2xl object-cover object-center">
-          <div class="grid grid-cols-3 gap-3 pt-3">
-            <div class="rounded-2xl bg-slate-50 p-4 text-center">
-              <div class="text-2xl font-black text-slate-950">20+</div>
-              <div class="mt-1 text-xs font-bold uppercase tracking-wide text-slate-500">Years Field Experience</div>
-            </div>
-            <div class="rounded-2xl bg-slate-50 p-4 text-center">
-              <div class="text-2xl font-black text-slate-950">DFW</div>
-              <div class="mt-1 text-xs font-bold uppercase tracking-wide text-slate-500">North Texas Service Area</div>
-            </div>
-            <div class="rounded-2xl bg-slate-50 p-4 text-center">
-              <div class="text-2xl font-black text-slate-950">Fast</div>
-              <div class="mt-1 text-xs font-bold uppercase tracking-wide text-slate-500">Low-Disruption Repairs</div>
-            </div>
-          </div>
+<div class="mt-6">
+  <a href="sources.html"
+     class="inline-block px-6 py-3 bg-transparent border border-sky-400 text-sky-400 font-semibold rounded-lg hover:bg-sky-400 hover:text-slate-900 transition">
+    View Sources
+  </a>
+</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="stat-card bg-white p-8 rounded-2xl shadow-md border border-slate-200 cursor-pointer transition hover:shadow-xl relative overflow-hidden">
+        <div class="text-4xl mb-4">🌎</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-900">Expansive Soil Movement</h3>
+        <p class="text-slate-500 font-semibold mb-4">Seasonal heave and settlement</p>
+        <div class="stat-hidden absolute inset-0 bg-slate-950 text-white p-6 flex flex-col justify-center">
+          <p class="text-sm leading-relaxed">DFW clay soil expands with moisture and shrinks during dry periods, creating repeated slab movement under sidewalks, drives, warehouse slabs, and building edges.</p>
         </div>
       </div>
-    </section>
 
-    <section id="about" class="blue-panel relative">
-      <div class="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div>
-          <div class="section-label">About KKE</div>
-          <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">A concrete restoration company built for real field conditions.</h2>
-        </div>
-        <div class="space-y-6 text-lg leading-8 text-slate-600">
-          <p>
-            KKE Concrete Lifting specializes in restoring settled, sunken, and unsupported concrete without unnecessary demolition. Our work is focused on practical results: improved safety, better drainage, stabilized slabs, reduced downtime, and longer concrete service life.
-          </p>
-          <p>
-            From municipal roadways and bridge approaches to commercial slabs, warehouse floors, and residential concrete, KKE brings field-tested experience, specialized equipment, and a clean project approach to every job.
-          </p>
+      <div class="stat-card bg-white p-8 rounded-2xl shadow-md border border-slate-200 cursor-pointer transition hover:shadow-xl relative overflow-hidden">
+        <div class="text-4xl mb-4">🏢</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-900">High-Use Asset Exposure</h3>
+        <p class="text-slate-500 font-semibold mb-4">Walkways, docks, drives, panels</p>
+        <div class="stat-hidden absolute inset-0 bg-slate-950 text-white p-6 flex flex-col justify-center">
+          <p class="text-sm leading-relaxed">Commercial properties accumulate dozens or hundreds of concrete problem areas that affect tenant experience, safety, drainage, and curb appeal.</p>
         </div>
       </div>
-    </section>
 
-    <section id="solutions" class="section-white relative">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="mx-auto max-w-3xl text-center">
-          <div class="section-label justify-center before:hidden">Who We Serve</div>
-          <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Choose the solution that fits your project.</h2>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Each audience has different pressures. KKE organizes solutions around the way concrete work is actually bought, approved, and executed.</p>
+      <div class="stat-card bg-white p-8 rounded-2xl shadow-md border border-slate-200 cursor-pointer transition hover:shadow-xl relative overflow-hidden">
+        <div class="text-4xl mb-4">⚠️</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-900">Liability and Disruption</h3>
+        <p class="text-slate-500 font-semibold mb-4">Trip hazards and downtime</p>
+        <div class="stat-hidden absolute inset-0 bg-slate-950 text-white p-6 flex flex-col justify-center">
+          <p class="text-sm leading-relaxed">Uneven panels increase slip-and-fall risk, ADA concerns, tenant complaints, and emergency repair costs if they are ignored too long.</p>
         </div>
-
-        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <a href="https://cosmecharles88-stack.github.io/smart-savings/" target="_blank" class="serve-card premium-card rounded-3xl p-6 transition hover:-translate-y-1">
-            <div class="serve-photo serve-municipal mb-5">
-              <div class="serve-photo-content">
-                <div class="serve-placeholder-text">Municipal Photo Placeholder<br>city-roadwork.jpg</div>
-                <div class="serve-overlay-text">
-                  <div class="text-xs font-black uppercase tracking-widest text-white/80">Municipal Solutions</div>
-                  <div class="mt-1 text-lg font-black">Roadways, sidewalks, bridge approaches</div>
-                </div>
-              </div>
-            </div>
-            <h3 class="text-xl font-black text-slate-950">Cities & Municipalities</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Stretch maintenance budgets, reduce closures, and deliver visible public improvements.</p>
-          </a>
-
-          <a href="https://cosmecharles88-stack.github.io/kke-site/" target="_blank" class="serve-card premium-card rounded-3xl p-6 transition hover:-translate-y-1">
-            <div class="serve-photo serve-commercial mb-5">
-              <div class="serve-photo-content">
-                <div class="serve-placeholder-text">Commercial Photo Placeholder<br>warehouse-slab.jpg</div>
-                <div class="serve-overlay-text">
-                  <div class="text-xs font-black uppercase tracking-widest text-white/80">Commercial Solutions</div>
-                  <div class="mt-1 text-lg font-black">Slabs, tilt walls, premium surfaces</div>
-                </div>
-              </div>
-            </div>
-            <h3 class="text-xl font-black text-slate-950">Commercial & Industrial</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Repair slabs, parking areas, tilt walls, warehouse foundations, and premium applications.</p>
-          </a>
-
-          <a href="https://cosmecharles88-stack.github.io/underconstruction/" target="_blank" class="serve-card premium-card rounded-3xl p-6 transition hover:-translate-y-1">
-            <div class="serve-photo serve-contractors mb-5">
-              <div class="serve-photo-content">
-                <div class="serve-placeholder-text">Contractor Photo Placeholder<br>void-filling.jpg</div>
-                <div class="serve-overlay-text">
-                  <div class="text-xs font-black uppercase tracking-widest text-white/80">Contractor Support</div>
-                  <div class="mt-1 text-lg font-black">Void filling and schedule protection</div>
-                </div>
-              </div>
-            </div>
-            <h3 class="text-xl font-black text-slate-950">General Contractors</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Protect schedules with fast mobilization, void filling, slab stabilization, and clean scopes.</p>
-          </a>
-
-          <a href="https://cosmecharles88-stack.github.io/underconstruction/" target="_blank" class="serve-card premium-card rounded-3xl p-6 transition hover:-translate-y-1">
-            <div class="serve-photo serve-residential mb-5">
-              <div class="serve-photo-content">
-                <div class="serve-placeholder-text">Residential Photo Placeholder<br>driveway-lift.jpg</div>
-                <div class="serve-overlay-text">
-                  <div class="text-xs font-black uppercase tracking-widest text-white/80">Residential Repairs</div>
-                  <div class="mt-1 text-lg font-black">Driveways, patios, pool decks</div>
-                </div>
-              </div>
-            </div>
-            <h3 class="text-xl font-black text-slate-950">Homeowners</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Lift driveways, patios, pool decks, sidewalks, garage aprons, porches, and stoops.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="blue-panel relative">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div class="max-w-3xl">
-            <div class="section-label">Completed Work</div>
-            <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Real projects. Real concrete restoration results.</h2>
-            <p class="mt-5 text-lg leading-8 text-slate-600">Every project shown here should reinforce the same message: KKE restores and stabilizes concrete without defaulting to full replacement.</p>
-          </div>
-          <a href="projects.html" class="btn-secondary w-fit">View Full Project Gallery</a>
-        </div>
-
-        <div class="project-slideshow mt-12" aria-label="Completed project slideshow">
-          <article class="project-slide active">
-            <div class="slide-image" style="background-image:url('bridge-approach.jpg');">
-              <div>Photo Placeholder<br>bridge-approach.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Municipal / Infrastructure</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Bridge Approach Stabilization</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Restored approach elevation and ride quality without demolition or extended lane closures.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">Improved ride quality while helping avoid full removal and replacement.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-slide">
-            <div class="slide-image" style="background-image:url('longitudinal-joint.jpg');">
-              <div>Photo Placeholder<br>longitudinal-joint.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Roadway Repair</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Longitudinal Joint Correction</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Corrected uneven joints to improve ride quality and reduce long-term pavement stress.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">A cleaner driving surface with less disruption than replacement work.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-slide">
-            <div class="slide-image" style="background-image:url('void-filling.jpg');">
-              <div>Photo Placeholder<br>void-filling.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Stabilization</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Void Filling & Subgrade Support</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Filled underlying voids to prevent continued settlement and extend concrete service life.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">Stabilized unsupported concrete before the problem became more expensive.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-slide">
-            <div class="slide-image" style="background-image:url('bird-bath-drainage.jpg');">
-              <div>Photo Placeholder<br>bird-bath-drainage.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Drainage Correction</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Bird Bath Correction</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Corrected low spots to eliminate standing water and improve surface drainage.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">Reduced ponding and helped restore proper surface performance.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-slide">
-            <div class="slide-image" style="background-image:url('warehouse-foundation.jpg');">
-              <div>Photo Placeholder<br>warehouse-foundation.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Commercial / Industrial</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Warehouse Foundation Repair</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Restored slab stability to maintain operational continuity and reduce structural risk.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">Supported a critical commercial surface without major operational shutdown.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-slide">
-            <div class="slide-image" style="background-image:url('tilt-wall-repair.jpg');">
-              <div>Photo Placeholder<br>tilt-wall-repair.jpg</div>
-            </div>
-            <div class="slide-content">
-              <div class="text-xs font-black uppercase tracking-widest text-[color:var(--kke-blue)]">Specialty Commercial</div>
-              <h3 class="mt-3 text-4xl font-black tracking-tight text-slate-950">Tilt Wall Stabilization</h3>
-              <p class="mt-5 text-lg leading-8 text-slate-600">Stabilized structural wall panels and supporting slabs without invasive reconstruction.</p>
-              <div class="mt-8 rounded-2xl bg-slate-50 p-5">
-                <div class="text-sm font-black uppercase tracking-widest text-slate-500">Result</div>
-                <p class="mt-2 text-base font-semibold leading-7 text-slate-700">Delivered a premium specialty repair for a high-value commercial application.</p>
-              </div>
-            </div>
-          </article>
-
-          <button class="slide-control slide-prev" type="button" aria-label="Previous project">‹</button>
-          <button class="slide-control slide-next" type="button" aria-label="Next project">›</button>
-
-          <div class="slide-dots" aria-label="Project slideshow navigation">
-            <button class="slide-dot active" type="button" aria-label="Show project 1"></button>
-            <button class="slide-dot" type="button" aria-label="Show project 2"></button>
-            <button class="slide-dot" type="button" aria-label="Show project 3"></button>
-            <button class="slide-dot" type="button" aria-label="Show project 4"></button>
-            <button class="slide-dot" type="button" aria-label="Show project 5"></button>
-            <button class="slide-dot" type="button" aria-label="Show project 6"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="applications" class="section-soft-blue relative">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="mx-auto max-w-3xl text-center">
-          <div class="section-label justify-center before:hidden">Applications</div>
-          <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Where KKE restores concrete instead of replacing it.</h2>
-          <p class="mt-5 text-lg leading-8 text-slate-600">From public infrastructure to private commercial surfaces and residential concrete, KKE helps stabilize, lift, and extend the life of existing slabs.</p>
-        </div>
-
-        <div class="mt-14 grid gap-6 lg:grid-cols-3">
-          <div class="premium-card rounded-3xl p-8">
-            <h3 class="text-2xl font-black text-slate-950">Municipal & Public Infrastructure</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Designed to help public works teams reduce replacement costs and improve public-facing assets.</p>
-            <ul class="mt-6 space-y-3 text-sm font-semibold text-slate-700">
-              <li>Concrete roadways</li>
-              <li>Bridge approaches</li>
-              <li>Longitudinal joints</li>
-              <li>Sidewalks & walkways</li>
-              <li>Concrete void filling</li>
-            </ul>
-          </div>
-
-          <div class="premium-card rounded-3xl p-8">
-            <h3 class="text-2xl font-black text-slate-950">Commercial & Industrial</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Built for uptime, safety, liability reduction, and performance-critical surfaces.</p>
-            <ul class="mt-6 space-y-3 text-sm font-semibold text-slate-700">
-              <li>Parking areas</li>
-              <li>Warehouse foundation repair</li>
-              <li>Tilt wall stabilization</li>
-              <li>Airport runways</li>
-              <li>High-load concrete slabs</li>
-            </ul>
-          </div>
-
-          <div class="premium-card rounded-3xl p-8">
-            <h3 class="text-2xl font-black text-slate-950">Residential & Property Maintenance</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600">Clean repairs for settled concrete around homes, properties, and shared spaces.</p>
-            <ul class="mt-6 space-y-3 text-sm font-semibold text-slate-700">
-              <li>Driveways</li>
-              <li>Garage aprons</li>
-              <li>Patios & pool decks</li>
-              <li>Porches & concrete stoops</li>
-              <li>Basement slabs & on-grade slabs</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-10 rounded-3xl bg-slate-950 px-8 py-10 text-center text-white shadow-xl">
-          <h3 class="text-2xl font-black">If it’s settled, sunken, or unsupported, KKE can help restore it without tearing it out.</h3>
-        </div>
-      </div>
-    </section>
-
-    <section class="blue-panel relative">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <div class="section-label">Why KKE</div>
-            <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">A better repair path when replacement is expensive, slow, or disruptive.</h2>
-            <p class="mt-5 text-lg leading-8 text-slate-600">KKE positions concrete lifting as a practical infrastructure solution, not a temporary patch. Our goal is to help customers get more usable life out of existing concrete.</p>
-          </div>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="premium-card rounded-3xl p-6">
-              <h3 class="font-black text-slate-950">Less Demolition</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Restore existing concrete without defaulting to removal and replacement.</p>
-            </div>
-            <div class="premium-card rounded-3xl p-6">
-              <h3 class="font-black text-slate-950">Less Downtime</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Complete many repairs with shorter closures and reduced disruption.</p>
-            </div>
-            <div class="premium-card rounded-3xl p-6">
-              <h3 class="font-black text-slate-950">Better Budget Use</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Help stretch repair budgets by preserving assets instead of replacing them early.</p>
-            </div>
-            <div class="premium-card rounded-3xl p-6">
-              <h3 class="font-black text-slate-950">Clean Execution</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Field-focused crews, practical scopes, and professional project communication.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section-white relative">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 shadow-2xl">
-          <div class="grid lg:grid-cols-2">
-            <div class="p-8 text-white sm:p-12">
-              <div class="text-sm font-black uppercase tracking-widest text-white/80">Contact KKE</div>
-              <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Request a site evaluation or budget impact estimate.</h2>
-              <p class="mt-5 text-lg leading-8 text-slate-300">Send us the project location, photos, and the concrete issue you need solved. We’ll help determine whether lifting, stabilization, or void filling is the right repair path.</p>
-
-              <div class="mt-8 grid gap-6 text-sm sm:grid-cols-2">
-                <div>
-                  <div class="font-black text-white">Address</div>
-                  <p class="mt-2 leading-6 text-slate-300">4918 Ben Day Murrin Rd<br>Fort Worth, TX 76126</p>
-                </div>
-                <div>
-                  <div class="font-black text-white">Phone</div>
-                  <p class="mt-2 leading-6 text-slate-300">(817) 443-6141</p>
-                </div>
-                <div>
-                  <div class="font-black text-white">Hours</div>
-                  <p class="mt-2 leading-6 text-slate-300">Monday – Friday<br>8:00 AM – 5:00 PM</p>
-                </div>
-                <div>
-                  <div class="font-black text-white">Service Area</div>
-                  <p class="mt-2 leading-6 text-slate-300">Serving municipalities, commercial clients, and property owners across North Texas.</p>
-                </div>
-              </div>
-            </div>
-
-            <form class="bg-white p-8 sm:p-12">
-              <div class="grid gap-5">
-                <div>
-                  <label class="text-sm font-bold text-slate-700" for="name">Name</label>
-                  <input id="name" class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-[color:var(--kke-blue)]" type="text" placeholder="Your name">
-                </div>
-                <div>
-                  <label class="text-sm font-bold text-slate-700" for="phone">Phone</label>
-                  <input id="phone" class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-[color:var(--kke-blue)]" type="tel" placeholder="(817) 000-0000">
-                </div>
-                <div>
-                  <label class="text-sm font-bold text-slate-700" for="type">Project Type</label>
-                  <select id="type" class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-[color:var(--kke-blue)]">
-                    <option>City / Municipality</option>
-                    <option>Commercial / Industrial</option>
-                    <option>General Contractor</option>
-                    <option>Residential</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="text-sm font-bold text-slate-700" for="message">Project Details</label>
-                  <textarea id="message" rows="5" class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-[color:var(--kke-blue)]" placeholder="Tell us about the concrete issue, location, approximate size, and urgency."></textarea>
-                </div>
-                <button type="submit" class="rounded-full bg-[color:var(--kke-blue)] px-6 py-4 text-sm font-black text-white transition hover:bg-[color:var(--kke-blue-dark)]">Submit Request</button>
-                <p class="text-xs leading-5 text-slate-500">Note: this form is a visual placeholder. It will need to be connected to an email service, form tool, or backend before it can send messages.</p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between lg:px-8">
-      <div class="font-semibold">© 2026 KKE Concrete Lifting. All rights reserved.</div>
-      <div class="flex gap-6 font-semibold">
-        <a href="#solutions" class="hover:text-[color:var(--kke-blue)]">Solutions</a>
-        <a href="#projects" class="hover:text-[color:var(--kke-blue)]">Projects</a>
-        <a href="#contact" class="hover:text-[color:var(--kke-blue)]">Contact</a>
       </div>
     </div>
-  </footer>
-  <script>
-    const slides = document.querySelectorAll('.project-slide');
-    const dots = document.querySelectorAll('.slide-dot');
-    const prevButton = document.querySelector('.slide-prev');
-    const nextButton = document.querySelector('.slide-next');
-    let currentSlide = 0;
+  </section>
 
-    function showSlide(index) {
-      if (!slides.length || !dots.length) return;
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = (index + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
+  <section id="comparison" class="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-slate-200">
+    <div class="space-y-4 mb-10">
+      <p class="text-sm font-bold uppercase tracking-widest kke-blue">Complication</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 border-l-4 border-kke-blue pl-4">Remove-and-Replace Creates a Larger Cost Than the Visible Concrete Repair</h2>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-4xl">Traditional demolition adds saw cutting, hauling, disposal, re-pour, curing time, blocked access, tenant disruption, and schedule risk. Polyurethane lifting targets the underlying void and settlement with a faster, cleaner repair.</p>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mb-8 justify-center">
+      <button id="btnCost" class="px-6 py-3 bg-kke-blue text-white font-semibold rounded-xl shadow hover:opacity-90 transition focus:ring-4 focus:ring-sky-200">Compare Cost</button>
+      <button id="btnTime" class="px-6 py-3 bg-slate-200 text-slate-700 font-semibold rounded-xl shadow hover:bg-slate-300 transition focus:ring-4 focus:ring-slate-100">Compare Disruption</button>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="comparisonChart"></canvas>
+    </div>
+
+    <div id="chartContextText" class="mt-8 p-6 bg-sky-50 rounded-2xl border border-sky-100 text-sky-900 text-center font-medium">Polyurethane lifting commonly delivers major savings compared with full demolition because it avoids tear-out, haul-off, re-pour, and long curing windows.</div>
+  </section>
+
+  <section id="technology" class="space-y-8">
+    <div class="space-y-4">
+      <p class="text-sm font-bold uppercase tracking-widest kke-blue">Question</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 border-l-4 border-kke-blue pl-4">How Can Property Teams Correct Settlement Without Shutting Down the Site?</h2>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-4xl">The answer is a surgical repair process that lifts, stabilizes, and seals the problem area while keeping the property usable.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <button class="tech-toggle bg-white border border-slate-200 p-6 rounded-2xl text-left hover:border-kke-blue focus:outline-none focus:ring-2 focus:ring-sky-500 transition" data-target="tech-1">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold text-lg text-slate-900">Precision Lifting</h3>
+          <span class="text-slate-400 font-bold text-xl">+</span>
+        </div>
+        <div id="tech-1" class="hidden mt-4 pt-4 border-t border-slate-100 text-slate-600">Foam is injected through small ports to fill voids, compact weak areas, and lift settled slabs back toward proper grade.</div>
+      </button>
+
+      <button class="tech-toggle bg-white border border-slate-200 p-6 rounded-2xl text-left hover:border-kke-blue focus:outline-none focus:ring-2 focus:ring-sky-500 transition" data-target="tech-2">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold text-lg text-slate-900">Fast Return-to-Service</h3>
+          <span class="text-slate-400 font-bold text-xl">+</span>
+        </div>
+        <div id="tech-2" class="hidden mt-4 pt-4 border-t border-slate-100 text-slate-600">Most areas can be reopened quickly, reducing tenant impact and avoiding the multi-day curing disruption of new concrete.</div>
+      </button>
+
+      <button class="tech-toggle bg-white border border-slate-200 p-6 rounded-2xl text-left hover:border-kke-blue focus:outline-none focus:ring-2 focus:ring-sky-500 transition" data-target="tech-3">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold text-lg text-slate-900">Tilt-Wall Leveling Support</h3>
+          <span class="text-slate-400 font-bold text-xl">+</span>
+        </div>
+        <div id="tech-3" class="hidden mt-4 pt-4 border-t border-slate-100 text-slate-600">Polyurethane can help support settlement areas around tilt-wall panels, footings, and slab edges where voids or weak soils are contributing to movement.</div>
+      </button>
+
+      <button class="tech-toggle bg-white border border-slate-200 p-6 rounded-2xl text-left hover:border-kke-blue focus:outline-none focus:ring-2 focus:ring-sky-500 transition" data-target="tech-4">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold text-lg text-slate-900">Void Fill and Water Control</h3>
+          <span class="text-slate-400 font-bold text-xl">+</span>
+        </div>
+        <div id="tech-4" class="hidden mt-4 pt-4 border-t border-slate-100 text-slate-600">Closed-cell polyurethane fills hidden voids and helps reduce water pathways that can keep washing out the subgrade.</div>
+      </button>
+    </div>
+  </section>
+
+  <section id="impact" class="space-y-8 bg-slate-100 p-8 md:p-12 rounded-3xl border border-slate-200">
+    <div class="space-y-4">
+      <p class="text-sm font-bold uppercase tracking-widest kke-blue">Answer</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 border-l-4 border-kke-blue pl-4">Standardize Concrete Preservation Across the Whole Property Portfolio</h2>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-4xl">The highest-value move is not one emergency repair. It is a repeatable program for identifying, prioritizing, and correcting settlement before it becomes a larger capital project.</p>
+    </div>
+
+    <div>
+      <div class="flex border-b border-slate-300 mb-6 overflow-x-auto">
+        <button class="tab-btn tab-active px-6 py-4 whitespace-nowrap focus:outline-none transition" data-tab="tab-esg">Sustainability</button>
+        <button class="tab-btn tab-inactive px-6 py-4 whitespace-nowrap focus:outline-none transition" data-tab="tab-scale">Scalability</button>
+        <button class="tab-btn tab-inactive px-6 py-4 whitespace-nowrap focus:outline-none transition" data-tab="tab-finance">Financial Advantage</button>
+      </div>
+
+      <div id="tab-esg" class="tab-content bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">Preserve Existing Concrete Instead of Demolishing It</h3>
+        <ul class="space-y-4 text-slate-600">
+          <li><strong>Less waste:</strong> avoids unnecessary tear-out and concrete disposal.</li>
+          <li><strong>Less trucking:</strong> reduces haul-off, new concrete delivery, and site congestion.</li>
+          <li><strong>Cleaner repair:</strong> protects the property appearance while extending useful life.</li>
+        </ul>
+      </div>
+
+      <div id="tab-scale" class="tab-content hidden bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">Create a Repeatable Maintenance Program</h3>
+        <ul class="space-y-4 text-slate-600">
+          <li><strong>Predictable budgeting:</strong> prioritize repairs by safety, drainage, tenant impact, and structural concern.</li>
+          <li><strong>Portfolio consistency:</strong> apply the same standard across retail, industrial, municipal, and commercial sites.</li>
+          <li><strong>Fewer emergencies:</strong> reduce surprise repairs by catching problems earlier.</li>
+        </ul>
+      </div>
+
+      <div id="tab-finance" class="tab-content hidden bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">Protect NOI by Reducing Disruption</h3>
+        <ul class="space-y-4 text-slate-600">
+          <li><strong>Lower total repair cost:</strong> avoid demolition, disposal, re-pour, and downtime costs.</li>
+          <li><strong>Tenant protection:</strong> keep entrances, drives, loading docks, and walkways open faster.</li>
+          <li><strong>Risk reduction:</strong> correct trip hazards and drainage issues before they escalate.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="space-y-8">
+    <div class="space-y-4 text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Implementation Roadmap</h2>
+      <p class="text-lg text-slate-600">A practical path for property managers and maintenance teams to move from reactive repairs to proactive asset preservation.</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto relative border-l-4 border-sky-200 ml-4 md:ml-auto md:mr-auto">
+      <div class="mb-10 ml-8 relative group">
+        <div class="absolute -left-[42px] top-1 h-6 w-6 rounded-full bg-kke-blue border-4 border-white shadow"></div>
+        <div class="bg-white p-6 rounded-2xl shadow border border-slate-200 group-hover:border-kke-blue transition">
+          <span class="text-sm font-bold kke-blue uppercase tracking-wider">Phase 1</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Site Walk and Hazard Map</h3>
+          <p class="text-slate-600">Identify trip hazards, settled panels, drainage failures, loading dock issues, tilt-wall concerns, and high-priority tenant impact areas.</p>
+        </div>
+      </div>
+
+      <div class="mb-10 ml-8 relative group">
+        <div class="absolute -left-[42px] top-1 h-6 w-6 rounded-full bg-amber-500 border-4 border-white shadow"></div>
+        <div class="bg-white p-6 rounded-2xl shadow border border-slate-200 group-hover:border-amber-500 transition">
+          <span class="text-sm font-bold text-amber-600 uppercase tracking-wider">Phase 2</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Pilot Repair</h3>
+          <p class="text-slate-600">Start with a high-visibility area such as a retail entry, sidewalk section, warehouse drive, loading dock, or tilt-wall settlement area.</p>
+        </div>
+      </div>
+
+      <div class="ml-8 relative group">
+        <div class="absolute -left-[42px] top-1 h-6 w-6 rounded-full bg-slate-900 border-4 border-white shadow"></div>
+        <div class="bg-white p-6 rounded-2xl shadow border border-slate-200 group-hover:border-slate-900 transition">
+          <span class="text-sm font-bold text-slate-500 uppercase tracking-wider">Phase 3</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Portfolio Preservation Plan</h3>
+          <p class="text-slate-600">Build a prioritized maintenance roadmap that protects curb appeal, tenant safety, and property value across all locations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-kke-blue text-white p-8 md:p-12 rounded-3xl shadow-xl text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Preserve the Asset Instead of Replacing the Concrete?</h2>
+    <p class="text-lg text-sky-100 max-w-3xl mx-auto mb-8">KKE helps property managers, maintenance teams, and owners correct settlement, fill voids, improve safety, and extend the useful life of existing concrete.</p>
+    <a href="mailto:info@kkeconcretelifting.com" class="inline-block bg-white text-slate-900 font-bold px-8 py-4 rounded-xl shadow hover:bg-slate-100 transition">Request a Site Review</a>
+  </section>
+
+</main>
+
+<footer class="bg-slate-950 text-slate-400 py-8 text-center mt-12 border-t border-slate-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <p>&copy; 2026 KKE Concrete Lifting. DFW Asset Preservation Strategy.</p>
+  </div>
+</footer>
+
+<script>
+  const costData = {
+    labels: ['Traditional Remove & Replace', 'Polyurethane Injection'],
+    datasets: [{
+      label: 'Estimated Cost Index',
+      data: [100, 40],
+      backgroundColor: ['#94a3b8', '#005ea8'],
+      borderRadius: 8,
+      borderWidth: 0
+    }]
+  };
+
+  const timeData = {
+    labels: ['Traditional Curing Downtime', 'Polyurethane Return-to-Service'],
+    datasets: [{
+      label: 'Operational Disruption Index',
+      data: [100, 5],
+      backgroundColor: ['#b91c1c', '#10b981'],
+      borderRadius: 8,
+      borderWidth: 0
+    }]
+  };
+
+  const ctx = document.getElementById('comparisonChart').getContext('2d');
+  let comparisonChart = new Chart(ctx, {
+    type: 'bar',
+    data: costData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': ' + context.parsed.y;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: '#e2e8f0' },
+          ticks: { color: '#64748b' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: '#334155',
+            callback: function(val) {
+              const label = this.getLabelForValue(val);
+              return label.split(' ');
+            }
+          }
+        }
+      }
     }
+  });
 
-    if (slides.length && dots.length && prevButton && nextButton) {
-      prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
-      nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
+  const btnCost = document.getElementById('btnCost');
+  const btnTime = document.getElementById('btnTime');
+  const contextText = document.getElementById('chartContextText');
 
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showSlide(index));
+  btnCost.addEventListener('click', () => {
+    comparisonChart.data = costData;
+    comparisonChart.update();
+    btnCost.className = 'px-6 py-3 bg-kke-blue text-white font-semibold rounded-xl shadow hover:opacity-90 transition focus:ring-4 focus:ring-sky-200';
+    btnTime.className = 'px-6 py-3 bg-slate-200 text-slate-700 font-semibold rounded-xl shadow hover:bg-slate-300 transition focus:ring-4 focus:ring-slate-100';
+    contextText.innerHTML = 'Polyurethane lifting commonly delivers major savings compared with full demolition because it avoids tear-out, haul-off, re-pour, and long curing windows.';
+    contextText.className = 'mt-8 p-6 bg-sky-50 rounded-2xl border border-sky-100 text-sky-900 text-center font-medium';
+  });
+
+  btnTime.addEventListener('click', () => {
+    comparisonChart.data = timeData;
+    comparisonChart.update();
+    btnTime.className = 'px-6 py-3 bg-kke-blue text-white font-semibold rounded-xl shadow hover:opacity-90 transition focus:ring-4 focus:ring-sky-200';
+    btnCost.className = 'px-6 py-3 bg-slate-200 text-slate-700 font-semibold rounded-xl shadow hover:bg-slate-300 transition focus:ring-4 focus:ring-slate-100';
+    contextText.innerHTML = 'Traditional concrete repair can disrupt access for days or weeks. Polyurethane lifting is designed for fast return-to-service with far less property disruption.';
+    contextText.className = 'mt-8 p-6 bg-rose-50 rounded-2xl border border-rose-100 text-rose-900 text-center font-medium';
+  });
+
+  document.querySelectorAll('.tech-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.getAttribute('data-target'));
+      const icon = btn.querySelector('span');
+      const isHidden = target.classList.contains('hidden');
+      target.classList.toggle('hidden');
+      icon.textContent = isHidden ? '-' : '+';
+      btn.classList.toggle('shadow-md', isHidden);
+      btn.classList.toggle('border-kke-blue', isHidden);
+    });
+  });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach((b) => {
+        b.classList.remove('tab-active');
+        b.classList.add('tab-inactive');
       });
-    }
-  </script>
+      tabContents.forEach((content) => content.classList.add('hidden'));
+      btn.classList.remove('tab-inactive');
+      btn.classList.add('tab-active');
+      document.getElementById(btn.getAttribute('data-tab')).classList.remove('hidden');
+    });
+  });
+</script>
 </body>
 </html>
